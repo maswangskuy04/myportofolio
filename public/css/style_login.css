@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../img/bg-content.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper .card {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 15px;
+    padding: 0.70rem;
+    background-color: #2125296e;
+    transition: .5s ease-in-out;
+}
+
+.wrapper .card:hover {
+    background: rgba(33, 37, 41, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.9px);
+}
+
+.wrapper h3 {
+    font-size: 1.5rem;
+    color: #f8f9fa;
+    text-transform: uppercase;
+}
+
+.wrapper .row {
+    padding: 0.50rem 0.50rem;
+}
+
+.wrapper .card .row input {
+    padding: 0.70rem 1.5rem;
+    border-radius: 8px;
+    transition: .4s ease-in-out;
+    border: 2px solid #1F49AD;
+    outline: none;
+    color: #fff;
+    background: transparent;
+}
+
+.wrapper .card .row .input-login:focus {
+    border: 2px solid #c8b6ff;
+    background-color: #212529a1;
+    outline: none;
+}
+
+.wrapper .card .row .btn-login {
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    transition: .4s ease;
+    background-color: #b8c0ff;
+    color: #495057;
+}
+
+.wrapper .card .row .btn-login:hover {
+    background-color: #495057;
+    color: #b8c0ff;
+}
