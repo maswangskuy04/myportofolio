@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -27,7 +28,19 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_profile' => 'required',
+            'alamat' => 'required',
+            'email' => 'email|required',
+            'gambar' => 'image|nullable|mimes:png,jpg,jpeg,jfif'
+        ]);
+
+        Profile::create([
+            'nama_profile' => $request->nama_profile,
+            'alamat' => $request->alamat,
+            'email' => $request->email,
+            'gambar' => $request->name
+        ]);
     }
 
     /**

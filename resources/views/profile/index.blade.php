@@ -2,8 +2,6 @@
 
 @section('title', 'Data Profile')
 
-@section('control')
-
 @section('content')
     <div class="table-responsive">
         <table class="table app-table-hover mb-0 text-left">
