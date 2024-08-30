@@ -52,6 +52,7 @@ body {
     outline: none;
     color: #fff;
     background: transparent;
+    text-align: center;
 }
 
 .wrapper .card .row .input-login:focus {

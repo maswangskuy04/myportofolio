@@ -2,62 +2,82 @@
 <html lang="en">
 
 <head>
-    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
-
-    <!-- Meta -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD BROOH</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-    <!-- FontAwesome JS-->
-    <script defer src="{{ asset('theme/assets/plugins/fontawesome/js/all.min.js') }}"></script>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- App CSS -->
-    <link id="theme-style" rel="stylesheet" href="{{ asset('theme/assets/css/portal.css') }}">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('template/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
 </head>
 
-<body class="app">
-    @include('inc.navside')
-    <div class="app-wrapper">
-        <div class="app-content pt-3 p-md-3 p-lg-4">
-            <div class="container-xl">
-                <div class="row g-3 mb-4 align-items-center justify-content-between">
-                    <div class="col-auto">
-                        <h1 class="app-page-title mb-0">@yield('title')</h1>
-                    </div>
-                    @include('inc.control')
-                </div><!--//row-->
-                <div class="tab-content" id="orders-table-tab-content">
-                    <div class="tab-pane fade show active" id="orders-all" role="tabpanel"
-                        aria-labelledby="orders-all-tab">
-                        <div class="app-card app-card-orders-table shadow-sm mb-5">
-                            <div class="app-card-body">
-                                @yield('content')
-                            </div><!--//app-card-body-->
-                        </div><!--//app-card-->
-                    </div><!--//tab-pane-->
-                </div><!--//tab-content-->
-            </div><!--//container-fluid-->
-        </div><!--//app-content-->
-    </div><!--//app-wrapper-->
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
 
 
-    <!-- Javascript -->
-    <script src="{{ asset('theme/assets/plugins/popper.min.js') }}"></script>
-    <script src="{{ asset('theme/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- Sidebar Start -->
+        @include('inc.sidebar')
+        <!-- Sidebar End -->
 
-    <!-- Charts JS -->
-    <script src="{{ asset('theme/assets/plugins/chart.js/chart.min.js') }}"></script>
-    <script src="{{ asset('theme/assets/js/index-charts.js') }}"></script>
 
-    <!-- Page Specific JS -->
-    <script src="{{ asset('theme/assets/js/app.js') }}"></script>
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            @include('inc.navbar')
+            <!-- Navbar End -->
 
+
+            <div class="container-fluid pt-4 px-4">
+                @yield('content')
+            </div>
+
+        </div>
+        <!-- Content End -->
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('template/lib/chart/chart.min.js') }}"></script>
+    <script src="{{ asset('template/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('template/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('template/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('template/lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('template/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('template/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ asset('template/js/main.js') }}"></script>
 </body>
 
 </html>

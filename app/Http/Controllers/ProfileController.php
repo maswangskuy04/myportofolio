@@ -12,7 +12,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $profiles = Profile::all();
+        return view('profile.index', compact('profiles'));
     }
 
     /**
@@ -32,15 +33,23 @@ class ProfileController extends Controller
             'nama_profile' => 'required',
             'alamat' => 'required',
             'email' => 'email|required',
-            'gambar' => 'image|nullable|mimes:png,jpg,jpeg,jfif'
+            'gambar' => 'required|image|mimes:png,jpg,jpeg,jfif,gif,svg'
         ]);
+
+        if($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $path = $image->store('public/image');
+            $name = basename($path);
+        }
 
         Profile::create([
             'nama_profile' => $request->nama_profile,
             'alamat' => $request->alamat,
             'email' => $request->email,
-            'gambar' => $request->name
+            'gambar' => $name
         ]);
+
+        return redirect()->to('profile')->with('message', 'Data profile berhasil ditambah brooh!');
     }
 
     /**
