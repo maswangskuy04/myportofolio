@@ -1,83 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>CRUD BROOH</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PUKIMAYYY</title>
+        <link href="{{ asset('theme/assets/css/lib/calendar2/semantic.ui.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/calendar2/pignose.calendar.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/chartist/chartist.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/themify-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/owl.carousel.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('theme/assets/css/lib/owl.theme.default.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('theme/assets/css/lib/weather-icons.css') }}" rel="stylesheet" />
+        <link href="{{ asset('theme/assets/css/lib/menubar/sidebar.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/lib/helper.css') }}" rel="stylesheet">
+        <link href="{{ asset('theme/assets/css/style.css') }}" rel="stylesheet">
+    </head>
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <body>
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('template/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('template/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
-
-        <!-- Sidebar Start -->
         @include('inc.sidebar')
-        <!-- Sidebar End -->
+        <!-- /# sidebar -->
 
-
-        <!-- Content Start -->
-        <div class="content">
-            <!-- Navbar Start -->
-            @include('inc.navbar')
-            <!-- Navbar End -->
-
-
-            <div class="container-fluid pt-4 px-4">
-                @yield('content')
+        @include('inc.navbar')
+        <div class="content-wrap">
+            <div class="main">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 p-r-0 title-margin-right">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <h1>@yield('title')</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# row -->
+                    <section id="main-content">
+                        @yield('content')
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="footer">
+                                    <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-
         </div>
-        <!-- Content End -->
-    </div>
+        <div id="search">
+            <button type="button" class="close">×</button>
+            <form>
+                <input type="search" value="" placeholder="type keyword(s) here" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <!-- jquery vendor -->
+        <script src="{{ asset('theme/assets/js/lib/jquery.min.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/jquery.nanoscroller.min.js') }}"></script>
+        <!-- nano scroller -->
+        <script src="{{ asset('theme/assets/js/lib/menubar/sidebar.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/preloader/pace.min.js') }}"></script>
+        <!-- sidebar -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('template/lib/chart/chart.min.js') }}"></script>
-    <script src="{{ asset('template/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('template/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('template/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('template/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('template/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('template/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+        <!-- bootstrap -->
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('template/js/main.js') }}"></script>
-</body>
+        <script src="{{ asset('theme/assets/js/lib/calendar-2/moment.latest.min.js') }}"></script>
+        <!-- scripit init-->
+        <script src="{{ asset('theme/assets/js/lib/calendar-2/semantic.ui.min.js') }}"></script>
+        <!-- scripit init-->
+        <script src="{{ asset('theme/assets/js/lib/calendar-2/prism.min.js') }}"></script>
+        <!-- scripit init-->
+        <script src="{{ asset('theme/assets/js/lib/calendar-2/pignose.calendar.min.js') }}"></script>
+        <!-- scripit init-->
+        <script src="{{ asset('theme/assets/js/lib/calendar-2/pignose.init.js') }}"></script>
+        <!-- scripit init-->
+
+
+        <script src="{{ asset('theme/assets/js/lib/weather/jquery.simpleWeather.min.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/weather/weather-init.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/circle-progress/circle-progress.min.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/circle-progress/circle-progress-init.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/chartist/chartist.min.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/chartist/chartist-init.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/sparklinechart/jquery.sparkline.min.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/sparklinechart/sparkline.init.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/owl-carousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/lib/owl-carousel/owl.carousel-init.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/scripts.js') }}"></script>
+        <!-- scripit init-->
+    </body>
 
 </html>
