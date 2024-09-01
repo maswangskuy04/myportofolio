@@ -5,6 +5,7 @@ use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LoginController::class, 'index']);
-Route::get('login', [LoginController::class])->name('login');
 Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
+Route::post('destroy', [LoginController::class, 'logout'])->middleware('auth')->name('destroy');
 
 Route::resource('dashboard', DashboardController::class);
 Route::resource('user', UserController::class);
+Route::get('user/{user}', [UserController::class, 'show']);
 Route::resource('experience', ExperienceController::class);
 Route::resource('education', EducationController::class);
+Route::resource('skill', SkillController::class);

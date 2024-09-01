@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="col-lg-12">
+        <a href="{{ route('user.create') }}" class="btn {{ $users ? 'hidden' : 'btn-outline-success' }}" id="add_btn" {{ $users ? 'aria-disabled="true"' : '' }}><i class="ti-plus"></i></a>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -12,24 +13,28 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Profile</th>
-                                <th>Alamat</th>
                                 <th>Email</th>
-                                <th class="col-2">Foto</th>
-                                <th class="col-2">Action</th>
+                                <th>Alamat</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Hobi</th>
+                                <th>Foto</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($profiles as $key => $profile)
+                            @foreach ($users as $key => $user)
                                 <tr>
-                                    <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $profile->nama_profile }}</td>
-                                    <td>{{ $profile->alamat }}</td>
-                                    <td>{{ $profile->email }}</td>
-                                    <td><img src="{{ asset('storage/image/' . $profile->gambar) }}" width="30%"></td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $user->nama_lengkap }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->alamat }}</td>
+                                    <td>{{ $user->ttl }}</td>
+                                    <td>{{ $user->hobi }}</td>
+                                    <td><img src="{{ asset('storage/image/' . $user->gambar) }}" style="width: 100px; height: auto;"></td>
                                     <td>
-                                        <a href="" class="btn btn-outline-secondary"><i
+                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-secondary"><i
                                                 class="ti-pencil-alt"></i></a>
-                                        <form action="{{ route('user.destroy', $profile->id) }}"
+                                        <form action="{{ route('user.destroy', $user->id) }}"
                                             onsubmit="return confirm('Akan di delete ?');" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')

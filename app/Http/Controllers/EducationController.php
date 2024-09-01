@@ -29,7 +29,21 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_sekolah' => 'required|max:50',
+            'jp' => 'required',
+            'tanggal_masuk' => 'date|required',
+            'tanggal_keluar' => 'date|required'
+        ]);
+
+        Education::create([
+            'nama_sekolah' => $request->nama_sekolah,
+            'jp' => $request->jp,
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'tanggal_keluar' => $request->tanggal_keluar
+        ]);
+
+        return redirect()->to('education')->with('message', 'Data Education berhasil ditambah brooh!');
     }
 
     /**
@@ -45,7 +59,8 @@ class EducationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $edit = Education::findOrFail($id);
+        return view('education.edit', compact('edit'));
     }
 
     /**
@@ -53,7 +68,14 @@ class EducationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Education::where('id', $id)->update([
+            'nama_sekolah' => $request->nama_sekolah,
+            'jp' => $request->jp,
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'tanggal_keluar' => $request->tanggal_keluar
+        ]);
+
+        return redirect()->to('education')->with('message', 'Data Education berhasil diupdate brooh!');
     }
 
     /**

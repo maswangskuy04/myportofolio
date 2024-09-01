@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="footer">
-                                    <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                                    <p>&copy; Crud Brooh {{ date('Y') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -52,13 +52,7 @@
                 </div>
             </div>
         </div>
-        <div id="search">
-            <button type="button" class="close">×</button>
-            <form>
-                <input type="search" value="" placeholder="type keyword(s) here" />
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
+
         <!-- jquery vendor -->
         <script src="{{ asset('theme/assets/js/lib/jquery.min.js') }}"></script>
         <script src="{{ asset('theme/assets/js/lib/jquery.nanoscroller.min.js') }}"></script>
@@ -92,6 +86,7 @@
         <script src="{{ asset('theme/assets/js/lib/owl-carousel/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('theme/assets/js/lib/owl-carousel/owl.carousel-init.js') }}"></script>
         <script src="{{ asset('theme/assets/js/scripts.js') }}"></script>
+        <script src="{{ asset('theme/assets/js/style.js') }}"></script>
         <!-- scripit init-->
     </body>
 

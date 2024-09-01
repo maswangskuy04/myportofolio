@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -11,7 +12,8 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        $skills = Skill::all();
+        return view('skill.index', compact('skills'));
     }
 
     /**
@@ -19,7 +21,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view('skill.create');
     }
 
     /**
@@ -27,7 +29,17 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'keahlian' => 'required|string',
+            'deskripsi' => 'required|string'
+        ]);
+
+        Skill::create([
+            'keahlian' => $request->keahlian,
+            'deskripsi' => $request->deskripsi
+        ]);
+
+        return redirect()->to('skill')->with('message', 'Data Skill berhasil ditambah brooh!');
     }
 
     /**
@@ -43,7 +55,8 @@ class SkillController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $edit = Skill::findOrFail($id);
+        return view('skill.edit', compact('edit'));
     }
 
     /**
@@ -51,7 +64,12 @@ class SkillController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Skill::where('id', $id)->update([
+            'keahlian' => $request->keahlian,
+            'deskripsi' => $request->deskripsi
+        ]);
+
+        return redirect()->to('skill')->with('message', 'Data Skill berhasil diupdate brooh!');
     }
 
     /**

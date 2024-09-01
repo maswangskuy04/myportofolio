@@ -16,20 +16,20 @@
                                 <th>Jenjang Pendidikan</th>
                                 <th>Tanggal Masuk</th>
                                 <th>Tanggal Keluar</th>
-                                <th class="col-2">Action</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($educations as $key => $education)
                                 <tr>
                                     <th>{{ $key + 1 }}</th>
-                                    <td>{{ $education->company_name }}</td>
+                                    <td>{{ $education->nama_sekolah }}</td>
+                                    <td>{{ $education->jp }}</td>
                                     <td>{{ $education->tanggal_masuk }}</td>
                                     <td>{{ $education->tanggal_keluar }}</td>
-                                    <td>{{ $education->position }}</td>
                                     <td>
-                                        <a href="" class="btn btn-outline-secondary"><i class="ti-pencil-alt"></i></a>
-                                        <form action="{{ route('profile.destroy', $education->id) }}"
+                                        <a href="{{ route('education.edit', $education->id) }}" class="btn btn-outline-secondary"><i class="ti-pencil-alt"></i></a>
+                                        <form action="{{ route('education.destroy', $education->id) }}"
                                             onsubmit="return confirm('Akan di delete ?');" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')

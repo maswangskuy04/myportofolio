@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-lg-12">
-        <a href="{{ route('experience.create') }}" class="btn btn-outline-success"><i class="ti-plus"></i></a>
+        <a href="{{ route('experience.create') }}" class="btn btn-outline-success"><i class="ti-plus"></i> Tambah Data</a>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,21 +16,21 @@
                                 <th>Posisi</th>
                                 <th>Tanggal Masuk</th>
                                 <th>Tanggal Keluar</th>
-                                <th class="col-2">Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($experiences as $key => $experience)
                                 <tr>
-                                    <th>{{ $key + 1 }}</th>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $experience->company_name }}</td>
                                     <td>{{ $experience->position }}</td>
                                     <td>{{ $experience->tanggal_masuk }}</td>
                                     <td>{{ $experience->tanggal_keluar }}</td>
                                     <td>
-                                        <a href="" class="btn btn-outline-secondary"><i
+                                        <a href="{{ route('experience.edit', $experience->id) }}" class="btn btn-outline-secondary"><i
                                                 class="ti-pencil-alt"></i></a>
-                                        <form action="{{ route('profile.destroy', $experience->id) }}"
+                                        <form action="{{ route('experience.destroy', $experience->id) }}"
                                             onsubmit="return confirm('Akan di delete ?');" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')

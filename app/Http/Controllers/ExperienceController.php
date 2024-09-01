@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
-use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
@@ -31,7 +30,6 @@ class ExperienceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_profile' => 'required',
             'company_name' => 'required',
             'position' => 'required',
             'tanggal_masuk' => 'date|required',
@@ -39,14 +37,13 @@ class ExperienceController extends Controller
         ]);
 
         Experience::create([
-            'id_profile' => $request->id_profile,
             'company_name' => $request->company_name,
             'position' => $request->position,
             'tanggal_masuk' => $request->tanggal_masuk,
             'tanggal_keluar' => $request->tanggal_keluar
         ]);
 
-        return redirect()->to('experience')->with('message', 'Data Experience ditambah brooh!');
+        return redirect()->to('experience')->with('message', 'Data Experience berhasil ditambah brooh!');
     }
 
     /**
@@ -62,7 +59,8 @@ class ExperienceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $edit = Experience::findOrFail($id);
+        return view('experience.edit', compact('edit'));
     }
 
     /**
@@ -70,7 +68,14 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Experience::where('id', $id)->update([
+            'company_name' => $request->company_name,
+            'position' => $request->position,
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'tanggal_keluar' => $request->tanggal_keluar
+        ]);
+
+        return redirect()->to('experience')->with('message', 'Data Experience berhasil diupdate brooh!');
     }
 
     /**

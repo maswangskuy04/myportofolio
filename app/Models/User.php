@@ -22,7 +22,8 @@ class User extends Authenticatable
         'alamat',
         'ttl',
         'hobi',
-        'password'
+        'password',
+        'gambar'
     ];
 
     /**
