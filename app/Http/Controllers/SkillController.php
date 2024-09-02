@@ -13,7 +13,7 @@ class SkillController extends Controller
     public function index()
     {
         $skills = Skill::all();
-        return view('skill.index', compact('skills'));
+        return view('admin.skill.index', compact('skills'));
     }
 
     /**
@@ -21,7 +21,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        return view('skill.create');
+        return view('admin.skill.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class SkillController extends Controller
     public function edit(string $id)
     {
         $edit = Skill::findOrFail($id);
-        return view('skill.edit', compact('edit'));
+        return view('admin.skill.edit', compact('edit'));
     }
 
     /**
@@ -77,6 +77,12 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $skill = Skill::findOrFail($id);
+
+        if($skill) {
+            $skill->delete();
+        }
+
+        return redirect()->to('skill')->with('message', 'Data Skill berhasil dihapus brooh!');
     }
 }

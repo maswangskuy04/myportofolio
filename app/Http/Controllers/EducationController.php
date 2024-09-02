@@ -13,7 +13,7 @@ class EducationController extends Controller
     public function index()
     {
         $educations = Education::all();
-        return view('education.index', compact('educations'));
+        return view('admin.education.index', compact('educations'));
     }
 
     /**
@@ -21,7 +21,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        return view('education.create');
+        return view('admin.education.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class EducationController extends Controller
     public function edit(string $id)
     {
         $edit = Education::findOrFail($id);
-        return view('education.edit', compact('edit'));
+        return view('admin.education.edit', compact('edit'));
     }
 
     /**
@@ -83,6 +83,12 @@ class EducationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $education = Education::findOrFail($id);
+
+        if($education) {
+            $education->delete();
+        }
+
+        return redirect()->to('education')->with('message', 'Data Education berhasil dihapus brooh!');
     }
 }

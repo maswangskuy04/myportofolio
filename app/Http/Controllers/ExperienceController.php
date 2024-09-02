@@ -13,7 +13,7 @@ class ExperienceController extends Controller
     public function index()
     {
         $experiences = Experience::all();
-        return view('experience.index', compact('experiences'));
+        return view('admin.experience.index', compact('experiences'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        return view('experience.create');
+        return view('admin.experience.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class ExperienceController extends Controller
     public function edit(string $id)
     {
         $edit = Experience::findOrFail($id);
-        return view('experience.edit', compact('edit'));
+        return view('admin.experience.edit', compact('edit'));
     }
 
     /**
@@ -83,6 +83,12 @@ class ExperienceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $experience = Experience::findOrFail($id);
+
+        if($experience) {
+            $experience->delete();
+        }
+
+        return redirect()->to('experience')->with('message', 'Data Experience berhasil dihapus brooh!');
     }
 }

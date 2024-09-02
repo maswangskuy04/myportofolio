@@ -17,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.index', compact('users'));
+        $users = User::get();
+        return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('admin.user.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller
             'gambar' => $name
         ]);
 
-        return redirect()->to('user')->with('message', 'Data User berhasil ditambah brooh!');
+        return redirect()->route('user')->with('message', 'Data User berhasil ditambah brooh!');
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**
@@ -77,7 +77,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $edit = User::findOrFail($id);
-        return view('user.edit', compact('edit'));
+        return view('admin.user.edit', compact('edit'));
     }
 
     /**

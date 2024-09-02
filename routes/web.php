@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PortoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
@@ -23,3 +24,6 @@ Route::get('user/{user}', [UserController::class, 'show']);
 Route::resource('experience', ExperienceController::class);
 Route::resource('education', EducationController::class);
 Route::resource('skill', SkillController::class);
+
+// route portofolio
+Route::get('ui', [PortoController::class, 'layout']);

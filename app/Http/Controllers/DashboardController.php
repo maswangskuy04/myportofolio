@@ -12,7 +12,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $datas = User::all();
+        return view('admin.dashboard.index', compact('datas'));
     }
 
     /**
