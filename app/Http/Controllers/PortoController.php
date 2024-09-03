@@ -15,6 +15,7 @@ class PortoController extends Controller
 
     public function profile()
     {
-        return view('ui.user');
+        $users = User::first();
+        return view('ui.user', compact('users'));
     }
 }

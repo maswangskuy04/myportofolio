@@ -8,7 +8,7 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Site Metas -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="{{ asset('porto/images/fevicon.png') }}" type="image/gif" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -17,18 +17,18 @@
 
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('porto/css/bootstrap.css') }}" />
 
     <!-- fonts style -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <!-- font awesome style -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ asset('porto/css/font-awesome.min.css') }}" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="{{ asset('porto/css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="{{ asset('porto/css/responsive.css') }}" rel="stylesheet" />
 
 </head>
 
@@ -40,7 +40,7 @@
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="index.html">
-                        <span>Hostit</span>
+                        <span>My Portfolio</span>
                     </a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -55,31 +55,18 @@
                                 <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html"> About</a>
+                                <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="service.html">Services</a>
+                                <a class="nav-link" href="service.html">Experience</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="price.html">Pricing</a>
+                                <a class="nav-link" href="price.html">Education</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact Us</a>
+                                <a class="nav-link" href="contact.html">Skill</a>
                             </li>
                         </ul>
-                        <div class="quote_btn-container">
-                            <form class="form-inline">
-                                <button class="btn   nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    Call : +01 123455678990
-                                </span>
-                            </a>
-                        </div>
                     </div>
                 </nav>
             </div>
@@ -833,11 +820,11 @@
     <!-- footer section -->
 
     <!-- jQery -->
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="{{ asset('porto/js/jquery-3.4.1.min.js') }}"></script>
     <!-- bootstrap js -->
-    <script src="js/bootstrap.js"></script>
+    <script src="{{ asset('porto/js/bootstrap.js') }}"></script>
     <!-- custom js -->
-    <script src="js/custom.js"></script>
+    <script src="{{ asset('porto/js/custom.js') }}"></script>
 
 
 </body>
