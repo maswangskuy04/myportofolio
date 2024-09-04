@@ -5,7 +5,6 @@ use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortoController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +25,6 @@ Route::resource('education', EducationController::class);
 Route::resource('skill', SkillController::class);
 
 // route portofolio
-Route::get('ui', [PortoController::class, 'layout']);
+Route::get('portofolio', [PortoController::class, 'portofolio']);
+Route::get('about', [PortoController::class, 'about'])->name('about');
+Route::get('experiences', [PortoController::class, 'experiences'])->name('experiences');

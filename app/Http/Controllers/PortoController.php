@@ -7,15 +7,20 @@ use Illuminate\Http\Request;
 
 class PortoController extends Controller
 {
-    public function layout()
+    public function portofolio()
     {
-        $users = User::first();
-        return view('ui.layout.app', compact('users'));
+        return view('portofolio.home');
     }
 
-    public function profile()
+    public function home()
     {
         $users = User::first();
-        return view('ui.user', compact('users'));
+        return view('portofolio.home', compact('users'));
+    }
+
+    public function about()
+    {
+        $users = User::first();
+        return view('portofolio.page.about', compact('users'));
     }
 }
